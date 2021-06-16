@@ -1,4 +1,4 @@
-<form action="index.php">
+<form action="">
 	<input type="text" name="a">
 	<input type="text" name="b">
 	<input type="text" name="n">

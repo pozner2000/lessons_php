@@ -1,21 +1,26 @@
 <?php
-include_once 'form.php';
-// include_once 'poloj.php';
-// include_once './dz/boolwe.php';
-include_once './DZ/1_zadacha/sum_chisel.php'
-// echo $_SERVER['REQUEST_URI'] . '<br>';
-// $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-// echo $uri_parts[0];
-
-
-
-// if($_GET['c'] != '1')
-// 		{
-// 			include_once 'gipotenuza.php';
-// 		}
-// 		else
-// 		{
-// 			include_once 'sum.php';
-// 		}
-
+    //include_once './DZ/ls_13_06_2021/zadacha_1/sum_chisel.php'; 
+    //echo $_SERVER["PATH_INFO"];
+    $path = $_SERVER["PATH_INFO"];
+    $path = substr($path,1);
+    if($path=='sum')
+    {
+        include_once 'DZ/ls_13_06_2021/zadacha_1/sum_chisel.php'; 
+    }
+    else if ($path=='test')
+    {
+        include_once 'DZ/test/test/test.php'; 
+    }
+    else if ($path=='ladia')
+    {
+        include_once 'DZ/uslovnii_operator/ladia/ladia.php'; 
+    }
+    else if ($path=='slon')
+    {
+        include_once 'DZ/uslovnii_operator/slon/slon.php'; 
+    }
+    else
+    {
+        echo $path." page not found";
+    }
 ?>
