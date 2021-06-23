@@ -35,4 +35,53 @@
 		mysqli_close($conn);
 		return $result;
 	}
+
+	function delete_user($id)
+	{
+		$conn = mysqli_connect('localhost', 'root', 'root');
+		if ($conn->connect_error) 
+        {
+			return false;
+		}
+		mysqli_select_db($conn, "base");
+		$result = mysqli_query($conn, "DELETE FROM `user` WHERE `id` = $id");
+		mysqli_close($conn);
+		return $result;
+	}
+
+	function update_user($id,$login, $tel, $description)
+	{
+		$conn = mysqli_connect('localhost', 'root', 'root');
+		if ($conn->connect_error) 
+        {
+			return false;
+		}
+		mysqli_select_db($conn, "base");
+		$query = 'UPDATE `user` set ';
+		if(strlen($login)> 0)
+		{
+			$query .= "`login` = '$login'"; 
+		}
+		if(strlen($tel) > 0)
+		{
+			if(strlen($login) > 0)
+			{
+				$query .= ',';
+			}
+			$query .= "`tel` = '$tel'";
+		}
+		if(strlen($description) > 0)
+		{
+			if(strlen($login) > 0 || strlen($tel) > 0)
+			{
+				$query .= ',';
+			}
+			$query .= "`description` = '$description'";
+		}
+		$query .= " WHERE `id` = $id";
+		print_r($query);
+		$result = mysqli_query($conn, $query);
+		mysqli_close($conn);
+		return $result;
+	}
 ?>
